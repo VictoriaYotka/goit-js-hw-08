@@ -8,17 +8,19 @@ const USER_DATA = 'feedback-form-state';
 
 const savedData = JSON.parse(localStorage.getItem(USER_DATA));
 
-const handlerFormFieldsInput = () => {
-    const email = inputEl.value;
-    const message = textAreaEl.value;
+const dataObj = {};
 
-    const dataObj = { email, message };
+const handlerFormFieldsInput = () => {
+    dataObj.email = inputEl.value;
+    dataObj.message = textAreaEl.value;
 
     localStorage.setItem(USER_DATA, JSON.stringify(dataObj));
+
 };
 
 const handlerFormSubmit = (event) => {
     event.preventDefault();
+    console.log(dataObj);
     localStorage.removeItem(USER_DATA);
     event.currentTarget.reset();
 
@@ -31,9 +33,9 @@ if(localStorage.getItem(USER_DATA)) {
 }
 
 return
-}
+};
 
 updateInputValues();
 
-formEl.addEventListener('input', throttle(handlerFormFieldsInput, 500))
-formEl.addEventListener('submit', handlerFormSubmit)
+formEl.addEventListener('input', throttle(handlerFormFieldsInput, 500));
+formEl.addEventListener('submit', handlerFormSubmit);
