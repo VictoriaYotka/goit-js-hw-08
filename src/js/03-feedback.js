@@ -11,28 +11,26 @@ const savedData = JSON.parse(localStorage.getItem(USER_DATA));
 const dataObj = {};
 
 const handlerFormFieldsInput = () => {
-    dataObj.email = inputEl.value;
-    dataObj.message = textAreaEl.value;
+  dataObj.email = inputEl.value;
+  dataObj.message = textAreaEl.value;
 
-    localStorage.setItem(USER_DATA, JSON.stringify(dataObj));
-
+  localStorage.setItem(USER_DATA, JSON.stringify(dataObj));
 };
 
-const handlerFormSubmit = (event) => {
-    event.preventDefault();
-    console.log(dataObj);
-    localStorage.removeItem(USER_DATA);
-    event.currentTarget.reset();
-
+const handlerFormSubmit = event => {
+  event.preventDefault();
+  console.log(dataObj);
+  localStorage.removeItem(USER_DATA);
+  event.currentTarget.reset();
 };
 
 const updateInputValues = () => {
-if(localStorage.getItem(USER_DATA)) {
+  if (localStorage.getItem(USER_DATA)) {
     inputEl.value = savedData.email;
     textAreaEl.value = savedData.message;
-}
+  }
 
-return
+  return;
 };
 
 updateInputValues();
